@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		E242B2B52C4301A10017D5DC /* lensApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E242B2B42C4301A10017D5DC /* lensApp.swift */; };
-		E242B2B72C4301A10017D5DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E242B2B62C4301A10017D5DC /* ContentView.swift */; };
+		E242B2B72C4301A10017D5DC /* ContactLensCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E242B2B62C4301A10017D5DC /* ContactLensCardView.swift */; };
 		E242B2B92C4301A20017D5DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E242B2B82C4301A20017D5DC /* Assets.xcassets */; };
 		E242B2BC2C4301A20017D5DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E242B2BB2C4301A20017D5DC /* Preview Assets.xcassets */; };
+		E242B2C32C4303C70017D5DC /* ContactLens.swift in Sources */ = {isa = PBXBuildFile; fileRef = E242B2C22C4303C70017D5DC /* ContactLens.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E242B2B12C4301A10017D5DC /* lens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E242B2B42C4301A10017D5DC /* lensApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lensApp.swift; sourceTree = "<group>"; };
-		E242B2B62C4301A10017D5DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E242B2B62C4301A10017D5DC /* ContactLensCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactLensCardView.swift; sourceTree = "<group>"; };
 		E242B2B82C4301A20017D5DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E242B2BB2C4301A20017D5DC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E242B2C22C4303C70017D5DC /* ContactLens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactLens.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +54,8 @@
 			isa = PBXGroup;
 			children = (
 				E242B2B42C4301A10017D5DC /* lensApp.swift */,
-				E242B2B62C4301A10017D5DC /* ContentView.swift */,
+				E242B2B62C4301A10017D5DC /* ContactLensCardView.swift */,
+				E242B2C22C4303C70017D5DC /* ContactLens.swift */,
 				E242B2B82C4301A20017D5DC /* Assets.xcassets */,
 				E242B2BA2C4301A20017D5DC /* Preview Content */,
 			);
@@ -137,8 +140,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E242B2B72C4301A10017D5DC /* ContentView.swift in Sources */,
+				E242B2B72C4301A10017D5DC /* ContactLensCardView.swift in Sources */,
 				E242B2B52C4301A10017D5DC /* lensApp.swift in Sources */,
+				E242B2C32C4303C70017D5DC /* ContactLens.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,7 +4,7 @@ import SwiftUI
 struct lensApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+			ContactLensCardView(contactLens: .constant(ContactLens.sampleData[0]))
         }
     }
 }
