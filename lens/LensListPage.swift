@@ -6,10 +6,16 @@ struct LensListPage: View {
 	
     var body: some View {
 		NavigationStack {
-			List($lensList) { lens in
-				NavigationLink(destination: ManageLensView(lens: lens)) {
-					ContactLensCardView(contactLens: lens)
-				}
+			List($lensList) { $lens in
+				ContactLensCardView(contactLens: $lens)
+					.swipeActions {
+						Button(action: {
+							lens.wornToday = !lens.wornToday
+						}) {
+							Text(!lens.wornToday ? "Worn" : "Not Worn")
+						}
+					}
+					.listRowBackground(lens.daysRemaining < 0 ? Color.red : Color.clear)
 			}
 			.navigationTitle("Contact Lenses")
 			.toolbar {
@@ -19,15 +25,7 @@ struct LensListPage: View {
 			}
 		}
 		.sheet(isPresented: $isPresentingLensStore) {
-			NavigationStack {
-				Text("lens store things here!")
-					.navigationTitle("Lens Store")
-					.toolbar {
-						Button(action: {isPresentingLensStore = false}) {
-							Text("Done")
-						}
-					}
-			}
+			LensStoreView(isPresented: $isPresentingLensStore)
 		}
     }
 }

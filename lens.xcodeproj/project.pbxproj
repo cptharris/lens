@@ -12,8 +12,10 @@
 		E242B2B92C4301A20017D5DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E242B2B82C4301A20017D5DC /* Assets.xcassets */; };
 		E242B2BC2C4301A20017D5DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E242B2BB2C4301A20017D5DC /* Preview Assets.xcassets */; };
 		E242B2C32C4303C70017D5DC /* ContactLens.swift in Sources */ = {isa = PBXBuildFile; fileRef = E242B2C22C4303C70017D5DC /* ContactLens.swift */; };
-		E27BD87A2C701D5700736010 /* ManageLensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BD8792C701D5700736010 /* ManageLensView.swift */; };
+		E27BD87C2C701FFB00736010 /* LensStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BD87B2C701FFB00736010 /* LensStoreView.swift */; };
 		E2821BD42C6FF4300000964E /* LensListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2821BD32C6FF4300000964E /* LensListPage.swift */; };
+		E2AA67AA2C714F95000EC55D /* LensStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AA67A92C714F95000EC55D /* LensStorage.swift */; };
+		E2AA67AC2C715539000EC55D /* ContactLensBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AA67AB2C715539000EC55D /* ContactLensBrand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,8 +25,10 @@
 		E242B2B82C4301A20017D5DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E242B2BB2C4301A20017D5DC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E242B2C22C4303C70017D5DC /* ContactLens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactLens.swift; sourceTree = "<group>"; };
-		E27BD8792C701D5700736010 /* ManageLensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageLensView.swift; sourceTree = "<group>"; };
+		E27BD87B2C701FFB00736010 /* LensStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensStoreView.swift; sourceTree = "<group>"; };
 		E2821BD32C6FF4300000964E /* LensListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensListPage.swift; sourceTree = "<group>"; };
+		E2AA67A92C714F95000EC55D /* LensStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensStorage.swift; sourceTree = "<group>"; };
+		E2AA67AB2C715539000EC55D /* ContactLensBrand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactLensBrand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +62,12 @@
 			isa = PBXGroup;
 			children = (
 				E242B2B42C4301A10017D5DC /* lensApp.swift */,
+				E2AA67A92C714F95000EC55D /* LensStorage.swift */,
 				E242B2B62C4301A10017D5DC /* ContactLensCardView.swift */,
 				E2821BD32C6FF4300000964E /* LensListPage.swift */,
-				E27BD8792C701D5700736010 /* ManageLensView.swift */,
+				E27BD87B2C701FFB00736010 /* LensStoreView.swift */,
 				E242B2C22C4303C70017D5DC /* ContactLens.swift */,
+				E2AA67AB2C715539000EC55D /* ContactLensBrand.swift */,
 				E242B2B82C4301A20017D5DC /* Assets.xcassets */,
 				E242B2BA2C4301A20017D5DC /* Preview Content */,
 			);
@@ -146,9 +152,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2AA67AC2C715539000EC55D /* ContactLensBrand.swift in Sources */,
+				E27BD87C2C701FFB00736010 /* LensStoreView.swift in Sources */,
 				E2821BD42C6FF4300000964E /* LensListPage.swift in Sources */,
+				E2AA67AA2C714F95000EC55D /* LensStorage.swift in Sources */,
 				E242B2B72C4301A10017D5DC /* ContactLensCardView.swift in Sources */,
-				E27BD87A2C701D5700736010 /* ManageLensView.swift in Sources */,
 				E242B2B52C4301A10017D5DC /* lensApp.swift in Sources */,
 				E242B2C32C4303C70017D5DC /* ContactLens.swift in Sources */,
 			);
