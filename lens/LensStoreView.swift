@@ -15,30 +15,55 @@ struct LensStoreView: View {
 				}
 				.swipeActions {
 					Button(action: {
+						newLens.0.brand = brand
 						isPresentingAddLens = true
-					}) {
+					}, label: {
 						Image(systemName: "plus")
-					}
+					}).tint(Color.green)
+				}
+				.swipeActions(edge: .leading) {
+					Button(role: .destructive, action: {
+						brandList.removeAll(where: {b in b.id == brand.id})
+					}, label: {
+						Text("Delete")
+					})
 				}
 			}
-				.navigationTitle("Lens Store")
-				.toolbar {
-					Button(action: {isPresented = false}) {
+			.navigationTitle("Lens Store")
+			.toolbar {
+				ToolbarItem {
+					Button(action: {
+						isPresented = false
+					}) {
 						Text("Done")
 					}
 				}
-		}
-		.sheet(isPresented: $isPresentingAddLens) {
-			NavigationStack {
-				Form {
-					TextField("Name", text: $newLens.0.name)
+				ToolbarItem(placement: .bottomBar) {
+					Button(action: {
+						
+					}, label: {
+						Text("Add New Brand")
+					})
 				}
-					.navigationTitle("Add Lens")
-					.toolbar {
-						Button(action: {isPresentingAddLens = false}) {
-							Text("Done")
-						}
-					}
+			}
+		}
+		// alert to add new lens to the lens list
+		.alert("Lens Name", isPresented: $isPresentingAddLens) {
+			ScrollView {
+				Button("Done", action: {
+					print(newLens)
+					isPresentingAddLens = false
+					isPresented = false
+					newLens.1 = true
+				})
+				.disabled(newLens.0.name == "")
+				
+				Button("Cancel", role: .cancel, action: {
+					newLens.0.name = ""
+					isPresentingAddLens = false
+				})
+				
+				TextField("Name", text: $newLens.0.name)
 			}
 		}
     }

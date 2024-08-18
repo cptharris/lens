@@ -36,6 +36,8 @@ struct ContactLens: Identifiable {
 		case right
 		case pair
 	}
+	
+	static let emptyLens = ContactLens(name: "", brand: ContactLensBrand(""))
 }
 
 extension ContactLens {

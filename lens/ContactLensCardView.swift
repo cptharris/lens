@@ -1,53 +1,70 @@
 import SwiftUI
 
+/// Displays information about a lens in a card format
+/// - Parameter lens: ContactLens to be displayed
 struct ContactLensCardView: View {
-	@Binding var contactLens: ContactLens
+	@Binding var lens: ContactLens
 	
     var body: some View {
 		VStack {
 			HStack {
-				HStack {
-					Image(systemName: "eye.circle.fill")
-						.foregroundStyle(contactLens.wornToday ? Color.green : Color.black)
-						.onTapGesture {
-							contactLens.wornToday = !contactLens.wornToday
-						}
-					Text(contactLens.name)
-				}
+				Icon_Name()
 				
 				Spacer()
 				
-				Text(contactLens.sideEye.rawValue)
+				Text(lens.sideEye.rawValue)
 			}
 			
-			HStack {
-				Text(contactLens.brand.name.padding(toLength: 25, withPad: " ", startingAt: 0))
-				
-				Spacer()
-				
-				Text(contactLens.brand.replace.rawValue)
-			}
+			Brand_Info()
 			
-			HStack {
-				if (contactLens.daysRemaining >= 0) {
-					Text("Expires: ")
-					if (contactLens.daysRemaining == 1) {
-						Text("Tomorrow")
-					} else if (contactLens.daysRemaining == 0) {
-						Text("Today")
-					} else {
-						Text(Date().addingTimeInterval(24 * 60 * 60 * Double(contactLens.daysRemaining)).formatted(date: .abbreviated, time: .omitted))
-					}
-				} else {
-					Text("EXPIRED")
-					Text("Overused by " + (-contactLens.daysRemaining).formatted() + " days")
-				}
-				
-			}
+			Expiration_Info()
 		}
     }
+	
+	/// Display eye icon (toggles wornToday) and lens name
+	private func Icon_Name() -> some View {
+		HStack {
+			Image(systemName: "eye.circle.fill")
+				.foregroundStyle(lens.wornToday ? Color.green : Color.black)
+				.onTapGesture {
+					lens.wornToday = !lens.wornToday
+				}
+			
+			Text(lens.name)
+		}
+	}
+	
+	/// Displays brand name (padded) and replacement cycle
+	private func Brand_Info() -> some View {
+		HStack {
+			Text(lens.brand.name.padding(toLength: 25, withPad: " ", startingAt: 0))
+			
+			Spacer()
+			
+			Text(lens.brand.replace.rawValue)
+		}
+	}
+	
+	/// Displays expiration date or information about overuse
+	private func Expiration_Info() -> some View {
+		HStack {
+			if (lens.daysRemaining >= 0) {
+				Text("Expires: ")
+				if (lens.daysRemaining == 1) {
+					Text("Tomorrow")
+				} else if (lens.daysRemaining == 0) {
+					Text("Today")
+				} else {
+					Text(Date().addingTimeInterval(86400 * Double(lens.daysRemaining)).formatted(date: .abbreviated, time: .omitted))
+				}
+			} else {
+				Text("EXPIRED: ")
+				Text("overused by " + (-lens.daysRemaining).formatted() + " days")
+			}
+		}
+	}
 }
 
 #Preview {
-	ContactLensCardView(contactLens: .constant(ContactLens.sampleData[2]))
+	ContactLensCardView(lens: .constant(ContactLens.sampleData[2]))
 }

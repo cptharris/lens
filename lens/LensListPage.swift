@@ -4,32 +4,53 @@ struct LensListPage: View {
 	@Binding var lensList: [ContactLens]
 	@Binding var brandList: [ContactLensBrand]
 	@State private var isPresentingLensStore = false
-	@State private var newLens = (ContactLens(name: "", brand: ContactLensBrand("")), false)
+	@State private var newLens = (ContactLens.emptyLens, false)
 	
     var body: some View {
 		NavigationStack {
-			List($lensList) { $lens in
-				ContactLensCardView(contactLens: $lens)
-					.swipeActions {
-						Button(action: {
-							lens.wornToday = !lens.wornToday
-						}) {
-							Text(!lens.wornToday ? "Worn" : "Not Worn")
-						}
+			ContactLensList()
+				.navigationTitle("Contact Lenses")
+				.toolbar {
+					Button(action: {isPresentingLensStore = true}) {
+						Image(systemName: "cart")
 					}
-					.listRowBackground(lens.daysRemaining < 0 ? Color.red : Color.clear)
-			}
-			.navigationTitle("Contact Lenses")
-			.toolbar {
-				Button(action: {isPresentingLensStore = true}) {
-					Image(systemName: "cart")
 				}
-			}
 		}
+		// present the lens store in LensStoreView.swift
 		.sheet(isPresented: $isPresentingLensStore) {
 			LensStoreView(brandList: $brandList, isPresented: $isPresentingLensStore, newLens: $newLens)
 		}
+		// if the newLens status changes
+		.onChange(of: newLens.1, {
+			print("newLens changed")
+			if (newLens.1) {
+				print("set to append new lens")
+				lensList.append(newLens.0)
+			}
+			newLens = (ContactLens.emptyLens, false)
+		})
     }
+	
+	private func ContactLensList() -> some View {
+		List($lensList) { $lens in
+			ContactLensCardView(lens: $lens)
+				.swipeActions {
+					Button(action: {
+						lens.wornToday = !lens.wornToday
+					}, label: {
+						Text(!lens.wornToday ? "Worn" : "Not Worn")
+					})
+				}
+				.swipeActions(edge: .leading) {
+					Button(role: .destructive, action: {
+						lensList.removeAll(where: {l in l.id == lens.id})
+					}, label: {
+						Text("Delete")
+					})
+				}
+				.listRowBackground(lens.daysRemaining < 0 ? Color.red : Color.white)
+		}
+	}
 }
 
 #Preview {
