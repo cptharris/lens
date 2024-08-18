@@ -22,9 +22,7 @@ struct LensListPage: View {
 		}
 		// if the newLens status changes
 		.onChange(of: newLens.1, {
-			print("newLens changed")
 			if (newLens.1) {
-				print("set to append new lens")
 				lensList.append(newLens.0)
 			}
 			newLens = (ContactLens.emptyLens, false)
