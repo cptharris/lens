@@ -2,7 +2,9 @@ import SwiftUI
 
 struct LensListPage: View {
 	@Binding var lensList: [ContactLens]
+	@Binding var brandList: [ContactLensBrand]
 	@State private var isPresentingLensStore = false
+	@State private var newLens = (ContactLens(name: "", brand: ContactLensBrand("")), false)
 	
     var body: some View {
 		NavigationStack {
@@ -25,11 +27,11 @@ struct LensListPage: View {
 			}
 		}
 		.sheet(isPresented: $isPresentingLensStore) {
-			LensStoreView(isPresented: $isPresentingLensStore)
+			LensStoreView(brandList: $brandList, isPresented: $isPresentingLensStore, newLens: $newLens)
 		}
     }
 }
 
 #Preview {
-	LensListPage(lensList: .constant(ContactLens.sampleData))
+	LensListPage(lensList: .constant(ContactLens.sampleData), brandList: .constant(ContactLensBrand.sampleData))
 }

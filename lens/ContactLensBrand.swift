@@ -1,6 +1,7 @@
 import Foundation
 
-struct ContactLensBrand {
+struct ContactLensBrand: Identifiable {
+	let id: UUID = UUID()
 	var name: String
 	var replace: ReplacementSchedule
 	
@@ -24,4 +25,12 @@ struct ContactLensBrand {
 		case biweekly
 		case monthly
 	}
+}
+
+extension ContactLensBrand {
+	static let sampleData =
+	[
+		ContactLensBrand("AccurateVision", replace: .biweekly),
+		ContactLensBrand("NewView", replace: .monthly)
+	]
 }
