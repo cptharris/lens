@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2010B892C72C928004CCCDF /* NewLensPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2010B882C72C928004CCCDF /* NewLensPromptView.swift */; };
 		E242B2B52C4301A10017D5DC /* lensApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E242B2B42C4301A10017D5DC /* lensApp.swift */; };
 		E242B2B72C4301A10017D5DC /* ContactLensCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E242B2B62C4301A10017D5DC /* ContactLensCardView.swift */; };
 		E242B2B92C4301A20017D5DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E242B2B82C4301A20017D5DC /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E2010B882C72C928004CCCDF /* NewLensPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLensPromptView.swift; sourceTree = "<group>"; };
 		E242B2B12C4301A10017D5DC /* lens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E242B2B42C4301A10017D5DC /* lensApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lensApp.swift; sourceTree = "<group>"; };
 		E242B2B62C4301A10017D5DC /* ContactLensCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactLensCardView.swift; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 		E242B2A82C4301A10017D5DC = {
 			isa = PBXGroup;
 			children = (
+				E2010B882C72C928004CCCDF /* NewLensPromptView.swift */,
 				E242B2B32C4301A10017D5DC /* lens */,
 				E242B2B22C4301A10017D5DC /* Products */,
 			);
@@ -155,6 +158,7 @@
 				E2AA67AC2C715539000EC55D /* ContactLensBrand.swift in Sources */,
 				E27BD87C2C701FFB00736010 /* LensStoreView.swift in Sources */,
 				E2821BD42C6FF4300000964E /* LensListPage.swift in Sources */,
+				E2010B892C72C928004CCCDF /* NewLensPromptView.swift in Sources */,
 				E2AA67AA2C714F95000EC55D /* LensStorage.swift in Sources */,
 				E242B2B72C4301A10017D5DC /* ContactLensCardView.swift in Sources */,
 				E242B2B52C4301A10017D5DC /* lensApp.swift in Sources */,

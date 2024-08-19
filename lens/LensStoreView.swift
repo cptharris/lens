@@ -1,57 +1,30 @@
 import SwiftUI
 
 struct LensStoreView: View {
+	@Binding var lensList: [ContactLens]
 	@Binding var brandList: [ContactLensBrand]
-	@Binding var isPresented: Bool
-	@Binding var newLens: (ContactLens, Bool)
-	@State private var isPresentingAddLens = false
-	@State private var newLensName = ""
+	@Binding var isPresentingLensStore: Bool
+	
+	@State private var isPresentingNewLensPrompt: Bool = false
+	@State private var newLens: ContactLens = ContactLens(name: "", brand: ContactLensBrand(""))
 	
     var body: some View {
 		NavigationStack {
 			BrandList()
 				.navigationTitle("Lens Store")
 				.toolbar {
-					ToolbarItem {
-						Button(action: {
-							isPresented = false
-						}) {
-							Text("Done")
-						}
-					}
-					ToolbarItem(placement: .bottomBar) {
-						Button(action: {
-							
-						}, label: {
-							Text("Add New Brand")
-						})
-					}
+					Button(action: {
+						
+					}, label: {
+						Image(systemName: "plus")
+					})
 				}
 		}
-		// alert to add new lens to the lens list
-		.sheet(isPresented: $isPresentingAddLens) {
-			NavigationStack() {
-				TextField("Name", text: $newLens.0.name)
-					.navigationTitle("New Lens")
-					.toolbar {
-						ToolbarItem(placement: .confirmationAction) {
-							Button("Done", action: {
-								isPresentingAddLens = false
-								isPresented = false
-								newLens.1 = true
-							})
-							.disabled(newLens.0.name == "")
-						}
-						ToolbarItem(placement: .cancellationAction) {
-							Button("Cancel", action: {
-								newLens.0.name = ""
-								isPresentingAddLens = false
-							})
-						}
-					}
-					.padding(10)
-				Spacer()
-			}
+		.popover(isPresented: $isPresentingNewLensPrompt) {
+			NewLensPromptView(
+				lensList: $lensList,
+				newLens: $newLens,
+				isPresentingNewLensPrompt: $isPresentingNewLensPrompt)
 		}
     }
 	
@@ -59,15 +32,11 @@ struct LensStoreView: View {
 		List(brandList) { brand in
 			VStack(alignment: .leading) {
 				Text(brand.name)
-				Text(brand.replace.rawValue)
+				Text(brand.replace.rawValue + " replacement")
 			}
-			.swipeActions {
-				Button(action: {
-					newLens.0.brand = brand
-					isPresentingAddLens = true
-				}, label: {
-					Image(systemName: "plus")
-				}).tint(Color.green)
+			.onTapGesture {
+				newLens.brand = brand
+				isPresentingNewLensPrompt = true
 			}
 			.swipeActions(edge: .leading) {
 				Button(role: .destructive, action: {
@@ -81,5 +50,9 @@ struct LensStoreView: View {
 }
 
 #Preview {
-	LensStoreView(brandList: .constant(ContactLensBrand.sampleData), isPresented: .constant(true), newLens: .constant((ContactLens(name: "", brand: ContactLensBrand("")), false)))
+	LensStoreView(
+		lensList: .constant(ContactLens.sampleData),
+		brandList: .constant(ContactLensBrand.sampleData),
+		isPresentingLensStore: .constant(true)
+	)
 }

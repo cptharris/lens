@@ -4,29 +4,25 @@ struct LensListPage: View {
 	@Binding var lensList: [ContactLens]
 	@Binding var brandList: [ContactLensBrand]
 	@State private var isPresentingLensStore = false
-	@State private var newLens = (ContactLens.emptyLens, false)
 	
-    var body: some View {
+	var body: some View {
 		NavigationStack {
 			ContactLensList()
 				.navigationTitle("Contact Lenses")
 				.toolbar {
-					Button(action: {isPresentingLensStore = true}) {
+					Button(action: {
+						isPresentingLensStore = true
+					}, label: {
 						Image(systemName: "cart")
-					}
+					})
 				}
+				.navigationDestination(isPresented: $isPresentingLensStore, destination: {
+					LensStoreView(
+						lensList: $lensList, brandList: $brandList,
+						isPresentingLensStore: $isPresentingLensStore
+					)
+				})
 		}
-		// present the lens store in LensStoreView.swift
-		.sheet(isPresented: $isPresentingLensStore) {
-			LensStoreView(brandList: $brandList, isPresented: $isPresentingLensStore, newLens: $newLens)
-		}
-		// if the newLens status changes
-		.onChange(of: newLens.1, {
-			if (newLens.1) {
-				lensList.append(newLens.0)
-			}
-			newLens = (ContactLens.emptyLens, false)
-		})
     }
 	
 	private func ContactLensList() -> some View {
@@ -46,7 +42,6 @@ struct LensListPage: View {
 						Text("Delete")
 					})
 				}
-				.listRowBackground(lens.daysRemaining < 0 ? Color.red : Color.white)
 		}
 	}
 }
