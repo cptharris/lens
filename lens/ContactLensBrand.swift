@@ -31,6 +31,7 @@ extension ContactLensBrand {
 	static let sampleData =
 	[
 		ContactLensBrand("AccurateVision", replace: .biweekly),
-		ContactLensBrand("NewView", replace: .monthly)
+		ContactLensBrand("NewView", replace: .monthly),
+		ContactLensBrand("ClearSight", replace: .daily)
 	]
 }

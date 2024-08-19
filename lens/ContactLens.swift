@@ -41,9 +41,9 @@ struct ContactLens: Identifiable {
 extension ContactLens {
 	static let sampleData =
 	[
-		ContactLens(name: "1", brand: ContactLensBrand("AccurateVision", replace: .biweekly), sideEye: .left),
-		ContactLens(name: "2", brand: ContactLensBrand("AccurateVision", replace: .biweekly), sideEye: .right),
-		ContactLens(name: "3", brand: ContactLensBrand("NewView", replace: .monthly)),
+		ContactLens(name: "Fred", brand: ContactLensBrand("AccurateVision", replace: .biweekly), sideEye: .left),
+		ContactLens(name: "Fred", brand: ContactLensBrand("AccurateVision", replace: .biweekly), sideEye: .right),
+		ContactLens(name: "Jamie", brand: ContactLensBrand("NewView", replace: .monthly)),
 		ContactLens(name: "Alpha", brand: ContactLensBrand("SuperClear"), datesUsed: [Date()]),
 		ContactLens(name: "Beta", brand: ContactLensBrand("SuperClear", replace: .daily), datesUsed: [Date().addingTimeInterval(-86400), Date().addingTimeInterval(-86400 * 2)]),
 	]
