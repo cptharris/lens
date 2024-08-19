@@ -58,10 +58,14 @@ struct ContactLensCardView: View {
 					Text(Date().addingTimeInterval(86400 * Double(lens.daysRemaining)).formatted(date: .abbreviated, time: .omitted))
 				}
 			} else {
-				Text("EXPIRED: overused by " + (-lens.daysRemaining).formatted() + " days")
+				Text("EXPIRED: overused by " + OverusedFormatted())
 			}
 		}
 		.foregroundStyle(lens.daysRemaining < 0 ? Color.red : (lens.daysRemaining < 2 ? Color.yellow : Color.black))
+	}
+	
+	private func OverusedFormatted() -> String {
+		(-lens.daysRemaining).formatted() + " day" + ((-lens.daysRemaining) != 1 ? "s" : "")
 	}
 }
 
