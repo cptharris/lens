@@ -16,12 +16,12 @@ struct LensListPage: View {
 						Image(systemName: "cart")
 					})
 				}
-				.navigationDestination(isPresented: $isPresentingLensStore, destination: {
+				.navigationDestination(isPresented: $isPresentingLensStore) {
 					LensStoreView(
 						lensList: $lensList, brandList: $brandList,
 						isPresentingLensStore: $isPresentingLensStore
 					)
-				})
+				}
 		}
     }
 	

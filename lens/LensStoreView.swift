@@ -8,23 +8,35 @@ struct LensStoreView: View {
 	@State private var isPresentingNewLensPrompt: Bool = false
 	@State private var newLens: ContactLens = ContactLens(name: "", brand: ContactLensBrand(""))
 	
+	@State private var isPresentingNewBrandPrompt: Bool = false
+	@State private var newBrand: ContactLensBrand = ContactLensBrand("")
+	
     var body: some View {
 		NavigationStack {
 			BrandList()
 				.navigationTitle("Lens Store")
 				.toolbar {
 					Button(action: {
-						
+						isPresentingNewBrandPrompt = true
 					}, label: {
 						Image(systemName: "plus")
 					})
 				}
 		}
-		.popover(isPresented: $isPresentingNewLensPrompt) {
+		.sheet(isPresented: $isPresentingNewLensPrompt) {
 			NewLensPromptView(
 				lensList: $lensList,
 				newLens: $newLens,
-				isPresentingNewLensPrompt: $isPresentingNewLensPrompt)
+				isPresentingNewLensPrompt: $isPresentingNewLensPrompt,
+				isPresentingLensStore: $isPresentingLensStore
+			)
+		}
+		.sheet(isPresented: $isPresentingNewBrandPrompt) {
+			NewBrandPromptView(
+				brandList: $brandList,
+				newBrand: $newBrand,
+				isPresentingNewBrandPrompt: $isPresentingNewBrandPrompt
+			)
 		}
     }
 	

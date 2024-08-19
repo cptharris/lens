@@ -19,7 +19,7 @@ struct ContactLensBrand: Identifiable {
 		}
 	}
 	
-	enum ReplacementSchedule: String {
+	enum ReplacementSchedule: String, CaseIterable {
 		case daily
 		case weekly
 		case biweekly
