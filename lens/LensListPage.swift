@@ -3,24 +3,17 @@ import SwiftUI
 struct LensListPage: View {
 	@Binding var lensList: [ContactLens]
 	@Binding var brandList: [ContactLensBrand]
-	@State private var isPresentingLensStore = false
 	
 	var body: some View {
 		NavigationStack {
 			ContactLensList()
 				.navigationTitle("Contact Lenses")
 				.toolbar {
-					Button(action: {
-						isPresentingLensStore = true
+					NavigationLink(destination: {
+						LensStoreView(lensList: $lensList, brandList: $brandList)
 					}, label: {
 						Image(systemName: "cart")
 					})
-				}
-				.navigationDestination(isPresented: $isPresentingLensStore) {
-					LensStoreView(
-						lensList: $lensList, brandList: $brandList,
-						isPresentingLensStore: $isPresentingLensStore
-					)
 				}
 		}
     }

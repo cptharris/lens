@@ -3,7 +3,6 @@ import SwiftUI
 struct LensStoreView: View {
 	@Binding var lensList: [ContactLens]
 	@Binding var brandList: [ContactLensBrand]
-	@Binding var isPresentingLensStore: Bool
 	
 	@State private var isPresentingNewLensPrompt: Bool = false
 	@State private var newLens: ContactLens = ContactLens(name: "", brand: ContactLensBrand(""))
@@ -27,8 +26,7 @@ struct LensStoreView: View {
 			NewLensPromptView(
 				lensList: $lensList,
 				newLens: $newLens,
-				isPresentingNewLensPrompt: $isPresentingNewLensPrompt,
-				isPresentingLensStore: $isPresentingLensStore
+				isPresentingNewLensPrompt: $isPresentingNewLensPrompt
 			)
 		}
 		.sheet(isPresented: $isPresentingNewBrandPrompt) {
@@ -62,9 +60,5 @@ struct LensStoreView: View {
 }
 
 #Preview {
-	LensStoreView(
-		lensList: .constant(ContactLens.sampleData),
-		brandList: .constant(ContactLensBrand.sampleData),
-		isPresentingLensStore: .constant(true)
-	)
+	LensStoreView(lensList: .constant(ContactLens.sampleData), brandList: .constant(ContactLensBrand.sampleData))
 }

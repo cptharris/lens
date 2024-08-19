@@ -4,7 +4,6 @@ struct NewLensPromptView: View {
 	@Binding var lensList: [ContactLens]
 	@Binding var newLens: ContactLens
 	@Binding var isPresentingNewLensPrompt: Bool
-	@Binding var isPresentingLensStore: Bool
 	
 	var body: some View {
 		NavigationStack {
@@ -41,15 +40,6 @@ struct NewLensPromptView: View {
 			.disabled(newLens.name == "")
 			
 			Spacer()
-			
-			Button("Add Lens & Close", action: {
-				lensList.append(newLens)
-				isPresentingNewLensPrompt = false
-				isPresentingLensStore = false
-			})
-			.disabled(newLens.name == "")
-			
-			Spacer()
 		}
 	}
 }
@@ -58,7 +48,6 @@ struct NewLensPromptView: View {
     NewLensPromptView(
 		lensList: .constant(ContactLens.sampleData),
 		newLens: .constant(ContactLens(name: "", brand: ContactLensBrand(""))),
-		isPresentingNewLensPrompt: .constant(false),
-		isPresentingLensStore: .constant(true)
+		isPresentingNewLensPrompt: .constant(false)
 	)
 }

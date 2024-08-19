@@ -30,13 +30,17 @@ struct NewBrandPromptView: View {
     }
 	
 	private func AddBrandButton() -> some View {
-		Button(action: {
-			brandList.append(newBrand)
-			isPresentingNewBrandPrompt = false
-		}, label: {
-			HStack { Spacer(); Text("Add Brand"); Spacer() }
-		})
-		.disabled(newBrand.name == "")
+		HStack {
+			Spacer()
+			
+			Button("Add Brand", action: {
+				brandList.append(newBrand)
+				isPresentingNewBrandPrompt = false
+			})
+			.disabled(newBrand.name == "")
+			
+			Spacer()
+		}
 	}
 }
 

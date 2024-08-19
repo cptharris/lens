@@ -25,10 +25,8 @@ struct ContactLensCardView: View {
 	private func Icon_Name() -> some View {
 		HStack {
 			Image(systemName: "eye.circle.fill")
-				.foregroundStyle(lens.wornToday ? Color.green : Color.black)
-				.onTapGesture {
-					lens.wornToday = !lens.wornToday
-				}
+				.foregroundStyle(lens.wornToday ? Color.green : Color.primary)
+				.onTapGesture {lens.wornToday = !lens.wornToday}
 			
 			Text(lens.name)
 		}
@@ -52,16 +50,18 @@ struct ContactLensCardView: View {
 				Text("Expires: ")
 				if (lens.daysRemaining == 1) {
 					Text("Tomorrow")
+						.foregroundStyle(Color.yellow)
 				} else if (lens.daysRemaining == 0) {
 					Text("Today")
+						.foregroundStyle(Color.orange)
 				} else {
 					Text(Date().addingTimeInterval(86400 * Double(lens.daysRemaining)).formatted(date: .abbreviated, time: .omitted))
 				}
 			} else {
 				Text("EXPIRED: overused by " + OverusedFormatted())
+					.foregroundStyle(Color.red)
 			}
 		}
-		.foregroundStyle(lens.daysRemaining < 0 ? Color.red : (lens.daysRemaining < 2 ? Color.yellow : Color.black))
 	}
 	
 	private func OverusedFormatted() -> String {
